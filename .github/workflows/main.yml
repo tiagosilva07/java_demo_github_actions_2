@@ -27,7 +27,13 @@ jobs:
       
       - name: Lint
         run: gradle check --info
-      
+
+      - name: Lint Upload Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-report
+          path: build\reports\lint-report.*continue-on-error
+          retention-days: 30 
   test:
     needs: lint
     runs-on: ubuntu-latest
