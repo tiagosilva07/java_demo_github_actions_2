@@ -28,12 +28,6 @@ jobs:
       - name: Lint
         run: gradle check --info
 
-      - name: Lint Upload Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: lint-report
-          path: build/reports/tests/lint
-          retention-days: 30 
   test:
     needs: lint
     runs-on: ubuntu-latest
@@ -54,22 +48,14 @@ jobs:
       
       - name: Lint
         run: gradle test --info
-
-      - name: Test Lint Report Upload
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-report
-          path: build/reports/tests/test/
-          retention-days: 30
           
       - name: OWASP
-        run: gradle dependencyCheckAnalyze
+        uses: KittyChiu/alerts-to-owasp10@v0.1.2
         
-      - name: Upload OWASP Report
+      - name: Upload Reports
         uses: actions/upload-artifact@v4
         with:
-          name: owasp-report
-          path: build/reports/dependency-check-report.html
+          path: build/reports/*
           retention-days: 30
   build:
     needs: test
