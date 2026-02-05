@@ -32,7 +32,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: lint-report
-          path: build/reports/lint-report.html
+          path: build/reports/tests/lint
           retention-days: 30 
   test:
     needs: lint
@@ -59,7 +59,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-report
-          path: build/reports/test-report.html
+          path: build/reports/tests/test/
           retention-days: 30
           
       - name: OWASP
