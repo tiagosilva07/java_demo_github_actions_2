@@ -59,7 +59,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-report
-          path: build\reports\test-report.html
+          path: build/reports/test-report.html
           retention-days: 30
           
       - name: OWASP
@@ -69,7 +69,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: owasp-report
-          path: build\reports\dependency-check-report.html
+          path: build/reports/dependency-check-report.html
           retention-days: 30
   build:
     needs: test
